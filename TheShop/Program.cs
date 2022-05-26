@@ -63,7 +63,6 @@ namespace TheShop
                 {
                     services.AddScoped<Program>();
                     services.AddScoped<IShopService, ShopService>();
-                    services.AddScoped<IDatabaseService, DatabaseDriver>();
                     services.AddScoped<ILogger, Logger>();
                     services.AddDbContext<ApiContext>(opt => opt.UseInMemoryDatabase());
                     services.AddScoped<ApiContext>();
