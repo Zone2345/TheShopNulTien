@@ -8,3 +8,9 @@ If naming and structure doesn't suit you, fell free to change them.
 Introducing tests to the existing code is more than welcome.
 Once you're finished with coding send us your code via email or URL to your GitHub/Bitbucket repository. Please include your source control history.
 Should you have any questions or feedback for the assignment, feel free to contact us.
+
+Framework upgraded to .NetFramework4.8
+Entity Framework 2.2 for InMemoryDatabase
+Custom Exception
+Seperated Sell ond Order function
+DependencyInjection
