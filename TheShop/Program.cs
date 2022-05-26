@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using TheShop.Common;
 using TheShop.Exceptions;
 using TheShop.Interfaces;
 using TheShop.Model;
+using TheShop.Repository;
 using TheShop.Services;
 
 namespace TheShop
@@ -31,8 +33,9 @@ namespace TheShop
             try
             {
                 Article article;
-                var orderedArticle = await _shopService.OrderArticle(1, 20, 10);
+                var orderedArticle = await _shopService.OrderArticle(1, 459, 10);
                 await _shopService.SellArticle(orderedArticle);
+                
                 //print article on console
                 article = await _shopService.GetById(1);
                 Console.WriteLine(article.ToString());
@@ -62,7 +65,10 @@ namespace TheShop
                     services.AddScoped<IShopService, ShopService>();
                     services.AddScoped<IDatabaseService, DatabaseDriver>();
                     services.AddScoped<ILogger, Logger>();
-                    services.AddScoped<IInventory, InventoryService>();
+                    services.AddDbContext<ApiContext>(opt => opt.UseInMemoryDatabase());
+                    services.AddScoped<ApiContext>();
+                    
+                    
                 });
         }
 
